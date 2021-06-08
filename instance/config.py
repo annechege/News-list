@@ -1,2 +1,2 @@
 
-MOVIE_API_KEY = '57338678ab664d3e9efbfd88eadfd3a2'
+NEWS_API_KEY = '57338678ab664d3e9efbfd88eadfd3a2'
