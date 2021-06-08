@@ -1,8 +1,8 @@
-from app.models.reviews import Review
+from app.models.import Review
 from app.forms import ReviewForm
 from app import app
 from .request import get_movies,get_movie,search_movie
-from flask import render_template,request,redirect,url_for
+from Flask import render_template,request,redirect,url_for
 
 @app.route('/')
 def index():

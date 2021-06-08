@@ -1,15 +1,40 @@
  
- {% macro displayMovieList(movie_list) %}
-
- {% for movie in movie_list %}
-     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-         <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-         <li class="text-center">
-             <a href="/movie/{{movie.id}}">
-                 {{ movie.title|truncate(10)}}</a>
-         </li>
+ {% macro displayNews(news) %}
+ <div class="container">
+     {% for display in news %}
+     <div class="row" style="background-color: black; color: white;">
+         <div class="col-md-4">
+             <div class="card" style="width: 18rem;">
+                 <ul>
+                    <li><p style="font-size: large; font-family: Luna;">{{ display.name }}</p></li>
+                 </ul>
+                 
+                 <hr>
+             </div>
+         </div>
+         <div class="col-md-4">
+             <ul>
+                 <li><p style="font-size: medium; font-style: oblique;">{{ display.description }}</p></li>
+             </ul>
+             
+             <hr>
+ 
+ 
+ 
+         </div>
+         <div class="col-md-4">
+             <ul>
+                 <li style="color: white; margin-left: 50px;"><a href="/source/{{display.id}}">Go to the page</a></li>
+             </ul>
+             <hr>
+             
+             
+ 
+         </div>
+         <div class="col-md-4">
+ 
+         </div>
      </div>
-
- {% endfor %}
-
-{% endmacro %}
+     {% endfor %}
+ </div>
+ {% endmacro %}

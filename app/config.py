@@ -1,10 +1,13 @@
+from app.models.__pycache.news import News
+
+
 class Config:
     '''
     General configuration parent class
     '''
     pass
 
-    MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
+   News _API_BASE_URL ='https://api.thenewsdb.org/3/news/{}?api_key={}'
 
 class DevConfig(Config):
     '''

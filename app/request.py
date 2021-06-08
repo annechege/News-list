@@ -1,25 +1,26 @@
 
+from app.news_test import News
 import urllib.request,json
-from .models import movie
-Movie = movie.Movie
+from .models import news
+News = news.News
 # Getting api key
-api_key = app.config['MOVIE_API_KEY']
-# Getting the movie base url
-base_url = app.config["MOVIE_API_BASE_URL"]
-def get_movies(category):
+api_key = app.config['News_API_KEY']
+# Getting the news base url
+base_url = app.config["News_API_BASE_URL"]
+def get_news(category):
     '''
     Function that gets the json responce to our url request
     '''
-    get_movies_url = base_url.format(category,api_key)
-    with urllib.request.urlopen(get_movies_url) as url:
-        get_movies_data = url.read()
-        get_movies_response = json.loads(get_movies_data)
-        movie_results = None
-        if get_movies_response['results']:
-            movie_results_list = get_movies_response['results']
-            movie_results = process_results(movie_results_list)
-    return movie_results
-def process_results(movie_list):
+    get_news_url = base_url.format(category,api_key)
+    with urllib.request.urlopen(get_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+        news_results = None
+        if get_news_response['results']:
+            news_results_list = get_news_response['results']
+            news_results = process_results(news_results_list)
+    return news_results
+def process_results(news_list):
     '''
     Function  that processes the movie result and transform them to a list of Objects
     Args:
@@ -28,13 +29,13 @@ def process_results(movie_list):
         movie_results: A list of movie objects
     '''
     movie_results = []
-    for movie_item in movie_list:
-        id = movie_item.get('id')
-        title = movie_item.get('original_title')
-        overview = movie_item.get('overview')
-        poster = movie_item.get('poster_path')
-        vote_average = movie_item.get('vote_average')
-        vote_count = movie_item.get('vote_count')
+    for news_item in news_list:
+        id = news_item.get('id')
+        title = news_item.get('original_title')
+        overview = news_item.get('overview')
+        poster = news_item.get('poster_path')
+        vote_average = news_item.get('vote_average')
+        vote_count = news_item.get('vote_count')
         movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
         movie_results.append(movie_object)
     return movie_results
