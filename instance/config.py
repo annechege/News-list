@@ -1,2 +1,2 @@
 
-# MOVIE_API_KEY = '78bdf162fcf6b45be6ab0f0e40192c70'
+MOVIE_API_KEY = '57338678ab664d3e9efbfd88eadfd3a2'
