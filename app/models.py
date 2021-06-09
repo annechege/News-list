@@ -11,7 +11,7 @@ class News:
         self.country = country
 
 
-class NewsArticle:
+class Article:
     def __init__(self,id,author,title,description,url,urlToImage,publishedAt,content):
         self.id = id
         self.author = author

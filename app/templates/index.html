@@ -1,21 +1,39 @@
 {% extends 'base.html' %}
- 
+
 <!DOCTYPE html>
 <html>
-   <head>
-       <meta charset="utf-8">
-       {% if title %}
-       <title> {{ title }}</title>
-       {% else %}
-       <title> Welcome to the best News Review website </title>
-       {% endif %}
-       {%import 'macros.html' as macro %}
-   </head>
-   <body>
-       <!-- Content block -->
 
-       {% block content %}
-       {{macro.displayNews(news)}}
-       {% endblock%}
-   </body>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> Welcome to the best News Review website </title>
+    {% endif %}
+    {%import 'macros.html' as macro %}
+</head>
+
+<body>
+    <!-- Content block -->
+
+    {% block content %}
+    <div>
+        {{macro.displayNews(science)}}
+    </div>
+    <div>
+        {{macro.displayNews(business)}}
+    </div>
+    <div>
+        {{macro.displayNews(technology)}}
+    </div>
+    <div>
+        {{macro.displayNews(general)}}
+    </div>
+    <div>
+        {{macro.displayNews(sports)}}
+    </div>
+    {% endblock%}
+
+</body>
+
 </html>

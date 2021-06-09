@@ -1,25 +1,28 @@
+# from app.main.views import article
 import urllib.request,json
-from .models import News, NewsArticle
+from .models import News, Article
 
 
 # Getting api key
 api_key = None
 # Getting the movie base url
 base_url = None
+ #getting article url
+article_url = None
 
 def configure_request(app):
     global api_key,base_url,news_article_url
     api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['NEWS_API_BASE_URL']
-    news_article_url = app.config['NEWS_ARTICLE_URL']
+    base_url = app.config['ALL_NEWS_API_URL']
+    news_article_url = app.config['ARTICLE_BASE_URL']
 
 
 
-def get_news():
+def get_news(category):
     """
   Function that gets the json response to our url request
   """
-    get_news_url = base_url.format(api_key)
+    get_news_url = base_url.format( category, api_key)
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
@@ -72,15 +75,15 @@ def process_article(news_list):
         publishedAt = news_item.get("publishedAt")
         content = news_item.get("content")
         if urlToImage:
-            news_object = NewsArticle(
+            news_object = Article(
                 id, author,title,description,url,urlToImage,publishedAt,content
             )
             news_article.append(news_object)
 
-    return news_article
+    return Article
 
 
-#Getting news articles:
+#Getting news article:
 def get_article(id):
     """
   Function that gets the json response to our url request
@@ -89,8 +92,8 @@ def get_article(id):
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
-        news_article = None
+        article = None
         if get_news_response["articles"]:
-            news_article_list = get_news_response["articles"]
-            news_article = process_article(news_article_list)
-    return news_article    
+            article_list = get_news_response["articles"]
+            article = process_article(article_list)
+    return article    
